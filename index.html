@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rishi's Creative — Visual Designer & Marketing Strategist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream:  #F7F5EF;
+      --white:  #FFFFFF;
+      --ink:    #111010;
+      --mid:    #555250;
+      --soft:   #B8B3AA;
+      --yellow: #FFD60A;
+      --green:  #0BE881;
+      --coral:  #FF5C5C;
+      --blue:   #3D7FFF;
+      --border: #E2DDD6;
+      --display: 'Bebas Neue', sans-serif;
+      --body:    'Outfit', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+      cursor: none;
+    }
+    .cursor {
+      position: fixed; width: 10px; height: 10px;
+      background: var(--ink); border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transition: transform 0.15s ease, background 0.2s;
+      transform: translate(-50%, -50%);
+    }
+    .cursor-ring {
+      position: fixed; width: 36px; height: 36px;
+      border: 1.5px solid var(--ink); border-radius: 50%;
+      pointer-events: none; z-index: 9998;
+      transition: transform 0.35s ease, width 0.3s, height 0.3s;
+      transform: translate(-50%, -50%);
+    }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 3rem;
+      background: rgba(247,245,239,0.88); backdrop-filter: blur(16px);
+      border-bottom: 1.5px solid var(--border);
+      animation: fadeDown 0.6s ease both;
+    }
+    .nav-logo {
+      font-family: var(--display); font-weight: 800; font-size: 1rem;
+      text-decoration: none; color: var(--ink);
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .logo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--yellow); display: inline-block; }
+    .nav-links { display: flex; gap: 0.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem; font-weight: 500; text-decoration: none; color: var(--mid);
+      padding: 0.4rem 1rem; border-radius: 999px; border: 1.5px solid transparent;
+      transition: all 0.2s;
+    }
+    .nav-links a:hover { border-color: var(--ink); color: var(--ink); background: var(--white); }
+    .nav-cta {
+      font-size: 0.82rem; font-weight: 600; text-decoration: none;
+      color: var(--ink); background: var(--yellow);
+      padding: 0.5rem 1.4rem; border-radius: 999px; border: 1.5px solid var(--yellow);
+      transition: all 0.2s;
+    }
+    .nav-cta:hover { background: var(--ink); color: var(--yellow); border-color: var(--ink); }
+    .hero {
+      min-height: 100vh; padding: 9rem 3rem 4rem;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .blob { position: absolute; border-radius: 50%; pointer-events: none; animation: drift 8s ease-in-out infinite alternate; }
+    .blob-1 { width: 320px; height: 320px; background: var(--yellow); opacity: 0.22; top: -80px; right: 5%; }
+    .blob-2 { width: 200px; height: 200px; background: var(--green); opacity: 0.18; bottom: 10%; left: -60px; animation-delay: 2s; }
+    .blob-3 { width: 140px; height: 140px; background: var(--coral); opacity: 0.18; top: 30%; right: 20%; animation-delay: 4s; }
+    .hero-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; animation: fadeUp 0.7s 0.2s ease both; }
+    .status-pill {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: var(--white); border: 1.5px solid var(--border); border-radius: 999px;
+      padding: 0.4rem 1rem; font-size: 0.78rem; font-weight: 500; color: var(--ink);
+    }
+    .status-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; animation: blink 2s ease-in-out infinite; }
+    .hero-name {
+      font-family: var(--display); font-weight: 800;
+      font-size: clamp(4.5rem, 10vw, 9.5rem);
+      line-height: 0.92; letter-spacing: -0.03em; margin-bottom: 2rem;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+    .highlight-block { display: inline-block; background: var(--yellow); padding: 0.1em 0.35em; border-radius: 8px; }
+    .hero-bottom {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      flex-wrap: wrap; gap: 2rem; animation: fadeUp 0.7s 0.5s ease both;
+    }
+    .hero-desc { max-width: 500px; font-size: 1.05rem; color: var(--mid); line-height: 1.75; }
+    .hero-desc strong { color: var(--ink); font-weight: 600; }
+    .hero-actions { display: flex; gap: 0.8rem; align-items: center; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--body); font-size: 0.88rem; font-weight: 600;
+      text-decoration: none; padding: 0.85rem 1.8rem; border-radius: 999px;
+      transition: all 0.22s; cursor: none;
+    }
+    .btn-dark { background: var(--ink); color: var(--yellow); border: 2px solid var(--ink); }
+    .btn-dark:hover { background: var(--yellow); color: var(--ink); }
+    .btn-outline { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+    .btn-outline:hover { background: var(--ink); color: var(--white); }
+    .btn-yellow { background: var(--yellow); color: var(--ink); border: 2px solid var(--yellow); }
+    .btn-yellow:hover { background: transparent; color: var(--yellow); }
+    .btn-ghost-white { background: transparent; color: rgba(255,255,255,0.8); border: 2px solid rgba(255,255,255,0.2); }
+    .btn-ghost-white:hover { border-color: var(--white); color: var(--white); }
+    .stats-bar {
+      background: var(--ink); padding: 2.5rem 3rem;
+      display: flex;
+    }
+    .stat-item {
+      flex: 1; display: flex; flex-direction: column; align-items: center;
+      padding: 0 2rem; border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-family: var(--display); font-weight: 800; font-size: 2.8rem; color: var(--yellow); line-height: 1; margin-bottom: 0.3rem; }
+    .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.45); text-align: center; }
+    .marquee-section {
+      background: var(--yellow); overflow: hidden; padding: 1.2rem 0;
+      border-top: 2px solid rgba(0,0,0,0.1); border-bottom: 2px solid rgba(0,0,0,0.1);
+    }
+    .marquee-track { display: flex; gap: 3rem; white-space: nowrap; animation: scroll-left 22s linear infinite; }
+    .marquee-item {
+      font-family: var(--display); font-weight: 700; font-size: 0.85rem;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink);
+      display: flex; align-items: center; gap: 1.5rem; flex-shrink: 0;
+    }
+    .marquee-star { color: rgba(0,0,0,0.3); font-size: 1.2rem; }
+    .section { padding: 6rem 3rem; }
+    .section-alt { background: var(--white); }
+    .section-eyebrow {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--mid); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.6rem;
+    }
+    .eyebrow-line { display: inline-block; width: 28px; height: 1.5px; background: var(--soft); }
+    .section-heading {
+      font-family: var(--display); font-weight: 800;
+      font-size: clamp(2.2rem, 4vw, 3.5rem); line-height: 1.05;
+      letter-spacing: -0.02em; margin-bottom: 3rem;
+    }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-text h2 {
+      font-family: var(--display); font-weight: 800;
+      font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.1;
+      letter-spacing: -0.02em; margin-bottom: 1.5rem;
+    }
+    .about-text p { font-size: 0.95rem; color: var(--mid); line-height: 1.85; margin-bottom: 1rem; }
+    .about-text p strong { color: var(--ink); }
+    .about-card { background: var(--cream); border-radius: 24px; padding: 2.5rem; border: 2px solid var(--border); }
+    .fact { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 0; border-bottom: 1.5px solid var(--border); font-size: 0.88rem; }
+    .fact:last-child { border-bottom: none; }
+    .fact-k { color: var(--soft); font-weight: 500; }
+    .fact-v { color: var(--ink); font-weight: 600; }
+    .fact-v.open { color: #0B9E4E; }
+    .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+    .work-card {
+      border-radius: 20px; padding: 2.5rem;
+      border: 2px solid transparent; transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .work-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
+    .wc-yellow { background: #FFF9D6; border-color: #FFE566; }
+    .wc-green  { background: #D6FFF0; border-color: #7BFFD4; }
+    .wc-blue   { background: #D6E8FF; border-color: #8BB8FF; }
+    .wc-coral  { background: #FFE0E0; border-color: #FFB3B3; }
+    .work-card-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      background: rgba(0,0,0,0.07); border-radius: 999px; padding: 0.3rem 0.9rem;
+      margin-bottom: 1.2rem; color: var(--ink);
+    }
+    .work-card h3 { font-family: var(--display); font-weight: 700; font-size: 1.5rem; margin-bottom: 0.3rem; line-height: 1.2; }
+    .work-card .company { font-size: 0.85rem; font-weight: 600; opacity: 0.5; margin-bottom: 1rem; }
+    .work-card p.desc { font-size: 0.9rem; color: var(--mid); line-height: 1.75; margin-bottom: 1.2rem; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .ctag { font-size: 0.72rem; font-weight: 500; padding: 0.25rem 0.8rem; border-radius: 999px; background: rgba(0,0,0,0.07); color: var(--ink); }
+    .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .vimeo-wrap {
+      border-radius: 14px; overflow: hidden;
+      aspect-ratio: 16/9; background: #111;
+      transition: transform 0.25s, box-shadow 0.25s;
+      border: 2px solid var(--border);
+    }
+    .vimeo-wrap:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.12); }
+    .vimeo-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+    .testimonial-wrap {
+      border-radius: 20px; overflow: hidden; aspect-ratio: 16/9;
+      background: #111; border: 3px solid var(--yellow);
+      transition: transform 0.25s, box-shadow 0.25s;
+      max-width: 780px; margin: 0 auto;
+    }
+    .testimonial-wrap:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+    .testimonial-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+    .achiev-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .achiev-card {
+      background: var(--white); border: 2px solid var(--border); border-radius: 16px;
+      padding: 2rem; display: flex; gap: 1.5rem; align-items: flex-start;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .achiev-card:hover { border-color: var(--yellow); transform: translateY(-2px); }
+    .rank-badge {
+      font-family: var(--display); font-weight: 800; font-size: 1rem;
+      width: 52px; height: 52px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .rb-y { background: var(--yellow); color: var(--ink); }
+    .rb-g { background: var(--green); color: var(--ink); }
+    .rb-c { background: var(--coral); color: white; }
+    .rb-b { background: var(--blue); color: white; font-size: 1.4rem; font-weight: 400; }
+    .achiev-info h3 { font-family: var(--display); font-weight: 700; font-size: 1rem; margin-bottom: 0.3rem; }
+    .achiev-info p { font-size: 0.82rem; color: var(--mid); line-height: 1.6; }
+    .achiev-host { font-size: 0.72rem; font-weight: 600; color: var(--soft); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.5rem; }
+    .skills-wrapper { display: flex; flex-direction: column; gap: 2.5rem; }
+    .skill-row-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid); margin-bottom: 1rem; }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .skill-pill {
+      font-size: 0.88rem; font-weight: 500; padding: 0.55rem 1.3rem;
+      border-radius: 999px; border: 2px solid var(--border); background: var(--white);
+      color: var(--ink); transition: all 0.2s;
+    }
+    .skill-pill:hover { border-color: var(--ink); background: var(--yellow); }
+    .skill-pill.hot { background: var(--yellow); border-color: var(--yellow); font-weight: 600; }
+    #contact {
+      background: var(--ink); padding: 7rem 3rem;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .contact-blob {
+      position: absolute; width: 500px; height: 500px; border-radius: 50%;
+      background: var(--yellow); opacity: 0.06;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+    }
+    .contact-heading {
+      font-family: var(--display); font-weight: 800;
+      font-size: clamp(3rem, 7vw, 7rem); line-height: 0.95;
+      letter-spacing: -0.03em; color: var(--white); margin-bottom: 1.5rem;
+    }
+    .contact-heading .yell { color: var(--yellow); }
+    .contact-sub { font-size: 1rem; color: rgba(255,255,255,0.4); margin-bottom: 3rem; }
+    .contact-row { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    footer {
+      background: #0A0909; padding: 1.5rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    footer p { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes drift { from { transform: translate(0,0) rotate(0deg); } to { transform: translate(20px,-30px) rotate(8deg); } }
+    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+    @keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (max-width: 860px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero, .section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .work-grid, .achiev-grid, .video-grid, .about-inner { grid-template-columns: 1fr; }
+      .stats-bar { flex-wrap: wrap; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1rem; }
+      footer { flex-direction: column; gap: 0.4rem; }
+      body { cursor: auto; }
+      .cursor, .cursor-ring { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav>
+    <a href="#" class="nav-logo"><span class="logo-dot"></span>Rishi's Creative</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Work</a></li>
+      <li><a href="#samples">Samples</a></li>
+      <li><a href="#achievements">Awards</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Let's Talk →</a>
+  </nav>
+
+  <section class="hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="hero-top">
+      <div class="status-pill"><span class="status-dot"></span>Available for opportunities</div>
+      <div class="status-pill" style="background:transparent;border-style:dashed;">📍 Bengaluru, India</div>
+    </div>
+    <h1 class="hero-name">
+      Rishi's<br>
+      <span style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;">
+        <span class="highlight-block">Creative</span> ✦
+      </span>
+    </h1>
+    <div class="hero-bottom">
+      <p class="hero-desc">
+        Visual designer &amp; marketing strategist. Built <strong>Scrap Media</strong> from scratch —
+        200+ clients, 125% avg. engagement growth. Now at <strong>SIMS Pune (MBA '28)</strong>
+        while creating work that actually moves people.
+      </p>
+      <div class="hero-actions">
+        <a href="#samples" class="btn btn-dark">View Work ↓</a>
+        <a href="https://www.linkedin.com/in/rishi-kumar-9970a8322/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat-item"><span class="stat-num">200+</span><span class="stat-label">Clients served</span></div>
+    <div class="stat-item"><span class="stat-num">125%</span><span class="stat-label">Avg. engagement lift</span></div>
+    <div class="stat-item"><span class="stat-num">3+</span><span class="stat-label">Years freelancing</span></div>
+    <div class="stat-item"><span class="stat-num">1st</span><span class="stat-label">National case win</span></div>
+  </div>
+
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span class="marquee-item">Visual Design <span class="marquee-star">★</span></span>
+      <span class="marquee-item">Content Strategy <span class="marquee-star">★</span></span>
+      <span class="marquee-item">Brand Positioning <span class="marquee-star">★</span></span>
+      <span class="marquee-item">Motion &amp; Video <span class="marquee-star">★</span></span>
+      <span class="marquee-item">Agency Building <span class="marquee-star">★</span></span>
+      <span class="marquee-item">Go-to-Market <span class="marquee-star">★</span></span>
+      <span class="marquee-item">Visual Design <span class="marquee-star">★</span></span>
+      <span class="marquee-item">Content Strategy <span class="marquee-star">★</span></span>
+      <span class="marquee-item">Brand Positioning <span class="marquee-star">★</span></span>
+      <span class="marquee-item">Motion &amp; Video <span class="marquee-star">★</span></span>
+      <span class="marquee-item">Agency Building <span class="marquee-star">★</span></span>
+      <span class="marquee-item">Go-to-Market <span class="marquee-star">★</span></span>
+    </div>
+  </div>
+
+  <section class="section section-alt" id="about">
+    <div class="reveal">
+      <div class="section-eyebrow"><span class="eyebrow-line"></span>About Me</div>
+      <div class="about-inner">
+        <div class="about-text">
+          <h2>Designing things<br>that <span class="highlight-block">actually work.</span></h2>
+          <p>I've been freelancing since 12th grade — not as a side project, but as a real business. I built <strong>Scrap Media</strong>, grew it to 200+ clients, managed a team, set pricing, acquired clients, and delivered results that spoke for themselves.</p>
+          <p>My edge is sitting at the intersection of <strong>visual craft and strategic thinking</strong>. I don't just design — I understand audiences, brand narratives, and what actually drives growth.</p>
+          <p>Currently doing my <strong>MBA at SIMS Pune (2026–2028)</strong> while staying active in the industry.</p>
+        </div>
+        <div class="about-card">
+          <div class="fact"><span class="fact-k">Based in</span><span class="fact-v">Bengaluru, India 🇮🇳</span></div>
+          <div class="fact"><span class="fact-k">MBA</span><span class="fact-v">SIMS Pune, 2026–28</span></div>
+          <div class="fact"><span class="fact-k">Undergrad</span><span class="fact-v">BBA — Business Analytics</span></div>
+          <div class="fact"><span class="fact-k">Core tools</span><span class="fact-v">AE · Premiere · PS · AI</span></div>
+          <div class="fact"><span class="fact-k">Languages</span><span class="fact-v">Tamil · English · Hindi · Kannada</span></div>
+          <div class="fact"><span class="fact-k">Status</span><span class="fact-v open">Open to roles ✦</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="experience">
+    <div class="section-eyebrow reveal"><span class="eyebrow-line"></span>Work Experience</div>
+    <h2 class="section-heading reveal">What I've been<br>building 🛠️</h2>
+    <div class="work-grid reveal">
+      <div class="work-card wc-yellow">
+        <span class="work-card-badge">🏢 June 2024 — Present</span>
+        <h3>Freelance Visual Designer &amp; Agency Founder</h3>
+        <p class="company">Scrap Media (Self-Employed)</p>
+        <p class="desc">Built and scaled a content creation agency from zero — 200+ clients, a coordinated team, and a proven system. Handled client acquisition, pricing, negotiation, and quality control. 125% average engagement lift across all accounts.</p>
+        <div class="card-tags"><span class="ctag">Agency Building</span><span class="ctag">Video Editing</span><span class="ctag">Client Mgmt</span><span class="ctag">Growth</span></div>
+      </div>
+      <div class="work-card wc-green">
+        <span class="work-card-badge">🚀 March 2026 — May 2026</span>
+        <h3>Marketing &amp; Content Intern</h3>
+        <p class="company">Voyaah (Travel-Tech Startup)</p>
+        <p class="desc">Created feature demo videos for product launches aimed at travellers and investors. Turned complex AI concepts into engaging visual narratives. Contributed to investor-facing presentations and early-stage growth initiatives.</p>
+        <div class="card-tags"><span class="ctag">Video Production</span><span class="ctag">Investor Comms</span><span class="ctag">Product Marketing</span></div>
+      </div>
+      <div class="work-card wc-blue">
+        <span class="work-card-badge">🎯 2026 — Present</span>
+        <h3>Media &amp; Research Intern</h3>
+        <p class="company">Headout</p>
+        <p class="desc">Working across media content and research — bridging visual storytelling with strategic insight. Building campaigns and assets grounded in audience understanding and strong creative execution.</p>
+        <div class="card-tags"><span class="ctag">Media</span><span class="ctag">Research</span><span class="ctag">Content</span></div>
+      </div>
+      <div class="work-card wc-coral">
+        <span class="work-card-badge">✈️ June 2024 — July 2024</span>
+        <h3>Operations Intern</h3>
+        <p class="company">Bangalore International Airport Ltd</p>
+        <p class="desc">Supported operational workflows within a large-scale infrastructure environment. Gained exposure to structured corporate systems, cross-functional coordination, and process management at scale.</p>
+        <div class="card-tags"><span class="ctag">Operations</span><span class="ctag">Process Mgmt</span><span class="ctag">Corporate</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="samples">
+    <div class="section-eyebrow reveal"><span class="eyebrow-line"></span>Work Samples</div>
+    <h2 class="section-heading reveal">See it in<br>motion 🎬</h2>
+    <div class="video-grid reveal">
+      <div class="vimeo-wrap"><iframe src="https://player.vimeo.com/video/1185407093?badge=0&autopause=0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe></div>
+      <div class="vimeo-wrap"><iframe src="https://player.vimeo.com/video/1185407658?badge=0&autopause=0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe></div>
+      <div class="vimeo-wrap"><iframe src="https://player.vimeo.com/video/1185409352?badge=0&autopause=0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe></div>
+      <div class="vimeo-wrap"><iframe src="https://player.vimeo.com/video/1185406922?badge=0&autopause=0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe></div>
+      <div class="vimeo-wrap"><iframe src="https://player.vimeo.com/video/1185407747?badge=0&autopause=0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe></div>
+      <div class="vimeo-wrap"><iframe src="https://player.vimeo.com/video/1185407719?badge=0&autopause=0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe></div>
+    </div>
+  </section>
+
+  <section class="section" id="testimonial">
+    <div class="section-eyebrow reveal"><span class="eyebrow-line"></span>Client Love</div>
+    <h2 class="section-heading reveal">Don't just take<br>my word for it 💬</h2>
+    <div class="testimonial-wrap reveal">
+      <iframe src="https://player.vimeo.com/video/1185408505?badge=0&autopause=0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+    </div>
+  </section>
+
+  <section class="section" id="achievements">
+    <div class="section-eyebrow reveal"><span class="eyebrow-line"></span>Achievements</div>
+    <h2 class="section-heading reveal">Competed &amp;<br>placed 🏆</h2>
+    <div class="achiev-grid reveal">
+      <div class="achiev-card">
+        <div class="rank-badge rb-y">1st</div>
+        <div class="achiev-info">
+          <h3>Marketing Case Competition</h3>
+          <p>Go-to-market and brand positioning strategy with optimised pricing for a non-existent product.</p>
+          <p class="achiev-host">Santhigiri Institute of Management · National Level</p>
+        </div>
+      </div>
+      <div class="achiev-card">
+        <div class="rank-badge rb-g">2nd</div>
+        <div class="achiev-info">
+          <h3>Crisis Break Case Competition</h3>
+          <p>Strategic recovery solutions with focus on risk mitigation and stakeholder management.</p>
+          <p class="achiev-host">Ramaiah University of Applied Sciences</p>
+        </div>
+      </div>
+      <div class="achiev-card">
+        <div class="rank-badge rb-c">Top 3</div>
+        <div class="achiev-info">
+          <h3>Sustainable Business Plan</h3>
+          <p>Sustainability-driven model with long-term goals, resource optimisation, and ethical practices.</p>
+          <p class="achiev-host">Kristu Jayanti College · Wellness Week 2024</p>
+        </div>
+      </div>
+      <div class="achiev-card">
+        <div class="rank-badge rb-b">✦</div>
+        <div class="achiev-info">
+          <h3>E-Week 2025 Case Competitions</h3>
+          <p>Rapid case challenges — scalable business models and innovation-driven pitches across multiple rounds.</p>
+          <p class="achiev-host">Kristu Jayanti College · E&amp;I Centre</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="skills">
+    <div class="section-eyebrow reveal"><span class="eyebrow-line"></span>Skills</div>
+    <h2 class="section-heading reveal">What I bring<br>to the table 🎨</h2>
+    <div class="skills-wrapper reveal">
+      <div>
+        <p class="skill-row-label">Design Tools</p>
+        <div class="skill-pills">
+          <span class="skill-pill hot">Adobe After Effects</span>
+          <span class="skill-pill hot">Premiere Pro</span>
+          <span class="skill-pill hot">Photoshop</span>
+          <span class="skill-pill">Illustrator</span>
+          <span class="skill-pill">InDesign</span>
+        </div>
+      </div>
+      <div>
+        <p class="skill-row-label">Marketing &amp; Strategy</p>
+        <div class="skill-pills">
+          <span class="skill-pill hot">Visual Content Strategy</span>
+          <span class="skill-pill hot">Brand Positioning</span>
+          <span class="skill-pill">Go-to-Market Strategy</span>
+          <span class="skill-pill">Pricing &amp; Negotiation</span>
+          <span class="skill-pill">Client Acquisition</span>
+        </div>
+      </div>
+      <div>
+        <p class="skill-row-label">Business &amp; Operations</p>
+        <div class="skill-pills">
+          <span class="skill-pill">Agency Operations</span>
+          <span class="skill-pill">Team Coordination</span>
+          <span class="skill-pill">Microsoft Excel</span>
+          <span class="skill-pill">Presentation Design</span>
+          <span class="skill-pill">Stakeholder Management</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-blob"></div>
+    <div class="reveal" style="position:relative;z-index:1;">
+      <p class="section-eyebrow" style="justify-content:center;color:rgba(255,255,255,0.3);margin-bottom:1.5rem;">
+        <span class="eyebrow-line" style="background:rgba(255,255,255,0.15)"></span>Say Hello
+      </p>
+      <h2 class="contact-heading">Let's make<br>something <span class="yell">great.</span></h2>
+      <p class="contact-sub">Open to internships, freelance projects &amp; full-time marketing roles.</p>
+      <div class="contact-row">
+        <a href="mailto:rishiikumarr005@gmail.com" class="btn btn-yellow">📧 rishiikumarr005@gmail.com</a>
+        <a href="https://www.linkedin.com/in/rishi-kumar-9970a8322/" target="_blank" class="btn btn-ghost-white">LinkedIn ↗</a>
+        <a href="tel:+919880704793" class="btn btn-ghost-white">📞 +91 98807 04793</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Rishi's Creative. All rights reserved.</p>
+    <p>Built from scratch · Bengaluru, India 🇮🇳</p>
+  </footer>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+    (function tick(){
+      cursor.style.left=mx+'px'; cursor.style.top=my+'px';
+      rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12;
+      ring.style.left=rx+'px'; ring.style.top=ry+'px';
+      requestAnimationFrame(tick);
+    })();
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.1});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
