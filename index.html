@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rishi's Creative — Visual Designer & Marketing Strategist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --cream:  #F7F5EF;
@@ -160,7 +160,7 @@
     }
     .about-text p { font-size: 0.95rem; color: var(--mid); line-height: 1.85; margin-bottom: 1rem; }
     .about-text p strong { color: var(--ink); }
-    .about-card { background: var(--cream); border-radius: 24px; padding: 2.5rem; border: 2px solid var(--border); }
+    .about-card { background: rgba(247,245,239,0.75); backdrop-filter: blur(14px); border-radius: 24px; padding: 2.5rem; border: 2px solid rgba(226,221,214,0.8); box-shadow: 0 8px 40px rgba(0,0,0,0.06); }
     .fact { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 0; border-bottom: 1.5px solid var(--border); font-size: 0.88rem; }
     .fact:last-child { border-bottom: none; }
     .fact-k { color: var(--soft); font-weight: 500; }
@@ -196,6 +196,8 @@
     }
     .vimeo-wrap:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.12); }
     .vimeo-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+    .vimeo-wrap::before { display:none; }
+    .vimeo-wrap::after { display:none; }
     .testimonial-wrap {
       border-radius: 20px; overflow: hidden; aspect-ratio: 16/9;
       background: #111; border: 3px solid var(--yellow);
@@ -263,6 +265,62 @@
     @keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity: 1; transform: none; }
+    /* ── FLOATING SAYINGS ── */
+    .saying { position:absolute; pointer-events:none; font-family:'Caveat',cursive; font-weight:600; background:var(--white); border:2px solid var(--border); border-radius:14px; padding:0.5rem 1rem; font-size:0.95rem; color:var(--ink); box-shadow:3px 4px 20px rgba(0,0,0,0.07); backdrop-filter:blur(8px); white-space:nowrap; animation:floatSaying 5s ease-in-out infinite alternate; }
+    .saying.yellow { background:var(--yellow); border-color:#e6c000; }
+    .saying.green  { background:#D6FFF0; border-color:#7BFFD4; }
+    .saying-1 { top:20%; right:4%;   animation-delay:0s;   --r:3deg;  }
+    .saying-2 { top:45%; right:1%;   animation-delay:1.2s; --r:-4deg; }
+    .saying-3 { bottom:20%; right:10%; animation-delay:2.4s; --r:2deg;  }
+    .saying-4 { top:32%; right:16%;  animation-delay:0.8s; --r:-3deg; }
+    /* ── PHOTO STICKER ── */
+    .title-sticker { display:inline-block; width:88px; height:88px; border-radius:50%; overflow:hidden; border:4px solid var(--yellow); box-shadow:4px 6px 20px rgba(0,0,0,0.18); vertical-align:middle; margin:0 0.5rem; animation:wobbleSticker 4s ease-in-out infinite; flex-shrink:0; }
+    .title-sticker img { width:100%; height:100%; object-fit:cover; object-position:top; }
+    /* ── BLUR ACCENTS ── */
+    .blur-orb { position:absolute; border-radius:50%; pointer-events:none; filter:blur(55px); opacity:0.3; }
+    .blur-orb-1 { width:260px; height:260px; background:var(--yellow); top:0; left:-80px; }
+    .blur-orb-2 { width:180px; height:180px; background:var(--green);  bottom:8%; right:-50px; }
+    /* ── LANGUAGES ── */
+    .lang-label { font-size:0.62rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--soft); margin-bottom:0.7rem; display:block; }
+    .lang-row { display:flex; align-items:center; justify-content:space-between; padding:0.6rem 0; border-bottom:1px solid var(--border); font-size:0.85rem; }
+    .lang-row:last-child { border-bottom:none; }
+    .lang-left { display:flex; align-items:center; gap:0.6rem; }
+    .lang-char { font-size:1.05rem; width:24px; text-align:center; }
+    .lang-name { font-weight:600; color:var(--ink); }
+    .lang-level { font-size:0.7rem; color:var(--soft); font-weight:500; }
+    .multilingual-tag { display:inline-block; font-size:0.62rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:rgba(17,16,16,0.22); margin-top:0.7rem; }
+    @keyframes floatSaying { from { transform:translateY(0) rotate(var(--r,3deg)); } to { transform:translateY(-10px) rotate(calc(var(--r,3deg) * -0.5)); } }
+    @keyframes wobbleSticker { 0%,100%{transform:rotate(-4deg) scale(1);} 50%{transform:rotate(4deg) scale(1.04);} }
+    /* ── LANGUAGE CYCLING HERO TEXT ── */
+    .hero-lang-cycle { display:inline-block; position:relative; overflow:hidden; }
+    .lang-slide { display:block; animation:langCycle 11s steps(1) infinite; }
+    @keyframes langCycle {
+      0%   { content:''; } /* handled via JS spans */
+    }
+    /* ── HIRE TOAST ── */
+    .hire-toast {
+      position:fixed; bottom:1.8rem; left:50%; transform:translateX(-50%) translateY(120px);
+      background:var(--ink); color:var(--white);
+      display:flex; align-items:center; gap:1rem;
+      padding:.85rem 1.6rem; border-radius:999px;
+      font-size:.84rem; font-weight:500;
+      z-index:8888; transition:transform .5s cubic-bezier(.34,1.56,.64,1);
+      white-space:nowrap; box-shadow:0 8px 40px rgba(0,0,0,0.28);
+      border:1px solid rgba(255,255,255,0.08);
+    }
+    .hire-toast.show { transform:translateX(-50%) translateY(0); }
+    .toast-pulse { width:8px; height:8px; background:var(--green); border-radius:50%; animation:blink 1.5s infinite; flex-shrink:0; }
+    .toast-link { color:var(--yellow); text-decoration:none; font-weight:700; margin-left:.2rem; }
+    .toast-close { background:none; border:none; color:rgba(255,255,255,.35); font-size:1rem; cursor:none; margin-left:.6rem; padding:0; line-height:1; }
+    /* ── ANIMATED HERO NAME ── */
+    .hero-lang-word {
+      display:inline-block;
+      animation:fadeSwap 1s ease;
+    }
+    @keyframes fadeSwap {
+      0%   { opacity:0; transform:translateY(12px); }
+      100% { opacity:1; transform:translateY(0); }
+    }
     @media (max-width: 860px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
@@ -280,13 +338,21 @@
   <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
+  <!-- HIRE TOAST -->
+  <div class="hire-toast" id="hireToast">
+    <span class="toast-pulse"></span>
+    Sip on a coffee, thoughtfully brewed by Rishi &nbsp;&nbsp;&nbsp;
+    <a href="#contact" class="toast-link">Let's talk ☕</a>
+    <button class="toast-close" onclick="document.getElementById('hireToast').classList.remove('show')">✕</button>
+  </div>
+
   <nav>
-    <a href="#" class="nav-logo"><span class="logo-dot"></span>Rishi's Creative</a>
+    <a href="#" class="nav-logo"><span class="logo-dot"></span>नमस्ते</a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
-      <li><a href="#experience">Work</a></li>
-      <li><a href="#samples">Samples</a></li>
-      <li><a href="#achievements">Awards</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#samples">Commissions</a></li>
+      <li><a href="#achievements">Case Comps</a></li>
     </ul>
     <a href="#contact" class="nav-cta">Let's Talk →</a>
   </nav>
@@ -295,12 +361,15 @@
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
     <div class="blob blob-3"></div>
+    <div class="blur-orb blur-orb-1"></div>
+    <div class="blur-orb blur-orb-2"></div>
+
     <div class="hero-top">
       <div class="status-pill"><span class="status-dot"></span>Available for opportunities</div>
       <div class="status-pill" style="background:transparent;border-style:dashed;">📍 Bengaluru, India</div>
     </div>
     <h1 class="hero-name">
-      Rishi's<br>
+      <span id="heroLang" class="hero-lang-word" style="display:block;min-height:1em;line-height:0.92;">Rishi's</span>
       <span style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;">
         <span class="highlight-block">Creative</span> ✦
       </span>
@@ -357,7 +426,7 @@
           <div class="fact"><span class="fact-k">MBA</span><span class="fact-v">SIMS Pune, 2026–28</span></div>
           <div class="fact"><span class="fact-k">Undergrad</span><span class="fact-v">BBA — Business Analytics</span></div>
           <div class="fact"><span class="fact-k">Core tools</span><span class="fact-v">AE · Premiere · PS · AI</span></div>
-          <div class="fact"><span class="fact-k">Languages</span><span class="fact-v">Tamil · English · Hindi · Kannada</span></div>
+          <div class="fact"><span class="fact-k">Languages</span><span class="fact-v">A English &nbsp;·&nbsp; हि Hindi &nbsp;·&nbsp; த Tamil &nbsp;·&nbsp; ಕ Kannada<br><span class="multilingual-tag">Multilingual</span></span></div>
           <div class="fact"><span class="fact-k">Status</span><span class="fact-v open">Open to roles ✦</span></div>
         </div>
       </div>
@@ -400,7 +469,7 @@
   </section>
 
   <section class="section section-alt" id="samples">
-    <div class="section-eyebrow reveal"><span class="eyebrow-line"></span>Work Samples</div>
+    <div class="section-eyebrow reveal"><span class="eyebrow-line"></span>Commissions</div>
     <h2 class="section-heading reveal">See it in<br>motion 🎬</h2>
     <div class="video-grid reveal">
       <div class="vimeo-wrap"><iframe src="https://player.vimeo.com/video/1185407093?badge=0&autopause=0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe></div>
@@ -421,8 +490,8 @@
   </section>
 
   <section class="section" id="achievements">
-    <div class="section-eyebrow reveal"><span class="eyebrow-line"></span>Achievements</div>
-    <h2 class="section-heading reveal">Competed &amp;<br>placed 🏆</h2>
+    <div class="section-eyebrow reveal"><span class="eyebrow-line"></span>Case Competitions</div>
+    <h2 class="section-heading reveal">Where I've<br>competed 🏆</h2>
     <div class="achiev-grid reveal">
       <div class="achiev-card">
         <div class="rank-badge rb-y">1st</div>
@@ -530,6 +599,19 @@
     })();
     const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.1});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // ── HIRE TOAST ──
+    setTimeout(()=>document.getElementById('hireToast').classList.add('show'), 2200);
+
+    // ── LANGUAGE CYCLING ──
+    const langs = ["Rishi's","ऋषि का"];
+    let li = 0;
+    const el = document.getElementById('heroLang');
+    el.style.transition = 'none';
+    setInterval(()=>{
+      li = (li + 1) % langs.length;
+      el.textContent = langs[li];
+    }, 600);
   </script>
 </body>
 </html>
