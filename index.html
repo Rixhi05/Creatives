@@ -341,20 +341,29 @@
         font-family: 'Outfit', sans-serif;
       }
 
-      /* Toast — short version on mobile */
-      .hire-toast { 
-        padding: .7rem 1.1rem; 
-        gap: .6rem; 
-        font-size: .78rem;
-        bottom: 1.2rem;
-        max-width: 92vw;
-        white-space: normal;
-        text-align: center;
-        flex-wrap: wrap;
-        justify-content: center;
+      /* Toast — slim single line on mobile */
+      .hire-toast {
+        padding: .55rem 1rem;
+        gap: .5rem;
+        font-size: .72rem;
+        bottom: 1rem;
+        max-width: 88vw;
+        white-space: nowrap;
+        overflow: hidden;
+        flex-wrap: nowrap;
+        border-radius: 999px;
       }
-      .toast-long { display: none; }
+      .toast-long, .toast-desktop-link { display: none; }
       .toast-short { display: inline !important; }
+
+      /* नमस्ते bold on mobile */
+      .nav-logo {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 1.3rem;
+        font-weight: 900;
+        letter-spacing: .04em;
+        -webkit-text-stroke: 0.4px var(--ink);
+      }
 
       /* Stats 2-col on mobile */
       .stats-bar { display: grid; grid-template-columns: 1fr 1fr; }
@@ -394,8 +403,8 @@
   <div class="hire-toast" id="hireToast">
     <span class="toast-pulse"></span>
     <span class="toast-long">Sip on a coffee, thoughtfully brewed by Rishi &nbsp;&nbsp;</span>
-    <span class="toast-short" style="display:none;">Brewed by Rishi ☕ &nbsp;</span>
-    <a href="#contact" class="toast-link">Let's talk ☕</a>
+    <span class="toast-short" style="display:none;"><a href="#contact" class="toast-link" style="margin:0;">Let's talk</a> over a coffee ☕</span>
+    <a href="#contact" class="toast-link toast-desktop-link">Let's talk ☕</a>
     <button class="toast-close" onclick="document.getElementById('hireToast').classList.remove('show')">✕</button>
   </div>
 
