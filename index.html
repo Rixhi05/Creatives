@@ -324,13 +324,65 @@
     @media (max-width: 860px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
-      .hero, .section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .hero { padding: 6rem 1.5rem 3rem; }
+      .section { padding: 3.5rem 1.5rem; }
       .work-grid, .achiev-grid, .video-grid, .about-inner { grid-template-columns: 1fr; }
       .stats-bar { flex-wrap: wrap; }
       .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1rem; }
       footer { flex-direction: column; gap: 0.4rem; }
       body { cursor: auto; }
       .cursor, .cursor-ring { display: none; }
+
+      /* Hero title smaller + Hindi bold fix */
+      .hero-name { font-size: clamp(3.8rem, 16vw, 5.5rem); }
+      #heroLang {
+        font-weight: 900;
+        -webkit-text-stroke: 0.5px var(--ink);
+        font-family: 'Outfit', sans-serif;
+      }
+
+      /* Toast — short version on mobile */
+      .hire-toast { 
+        padding: .7rem 1.1rem; 
+        gap: .6rem; 
+        font-size: .78rem;
+        bottom: 1.2rem;
+        max-width: 92vw;
+        white-space: normal;
+        text-align: center;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .toast-long { display: none; }
+      .toast-short { display: inline !important; }
+
+      /* Stats 2-col on mobile */
+      .stats-bar { display: grid; grid-template-columns: 1fr 1fr; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+      /* About card full width */
+      .about-card { margin-top: 2rem; }
+
+      /* Video grid single col */
+      .video-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+
+      /* Achievements single col */
+      .achiev-grid { grid-template-columns: 1fr; }
+
+      /* Skills pills wrap nicely */
+      .skill-pills { gap: 0.4rem; }
+      .skill-pill { font-size: .8rem; padding: .45rem 1rem; }
+
+      /* Contact section padding */
+      #contact { padding: 4rem 1.5rem; }
+      .contact-heading { font-size: clamp(2.8rem, 12vw, 5rem); }
+      .contact-row { flex-direction: column; align-items: center; }
+
+      /* Marquee slightly slower on mobile */
+      .marquee-track { animation-duration: 30s; }
+
+      /* Section headings */
+      .section-heading { font-size: clamp(2rem, 8vw, 3rem); margin-bottom: 2rem; }
     }
   </style>
 </head>
@@ -341,7 +393,8 @@
   <!-- HIRE TOAST -->
   <div class="hire-toast" id="hireToast">
     <span class="toast-pulse"></span>
-    Sip on a coffee, thoughtfully brewed by Rishi &nbsp;&nbsp;&nbsp;
+    <span class="toast-long">Sip on a coffee, thoughtfully brewed by Rishi &nbsp;&nbsp;</span>
+    <span class="toast-short" style="display:none;">Brewed by Rishi ☕ &nbsp;</span>
     <a href="#contact" class="toast-link">Let's talk ☕</a>
     <button class="toast-close" onclick="document.getElementById('hireToast').classList.remove('show')">✕</button>
   </div>
