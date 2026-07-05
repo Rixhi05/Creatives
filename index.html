@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-L51XT32JR2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-L51XT32JR2');
-</script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rishi's Creative — Visual Designer & Marketing Strategist</title>
@@ -18,24 +8,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --cream:  #F7F5EF;
-      --white:  #FFFFFF;
-      --ink:    #111010;
-      --mid:    #555250;
+      --cream:  #0A0010;
+      --white:  #F0ECF8;
+      --ink:    #F0ECF8;
+      --mid:    #C8A8E8;
       --soft:   #B8B3AA;
-      --yellow: #FFD60A;
-      --green:  #0BE881;
-      --coral:  #FF5C5C;
-      --blue:   #3D7FFF;
-      --border: #E2DDD6;
+      --yellow: #800080;
+      --green:  #D50048;
+      --coral:  #A90072;
+      --blue:   #2A0048;
+      --border: #2A0048;
       --display: 'Bebas Neue', sans-serif;
       --body:    'Outfit', sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      background: var(--cream);
-      color: var(--ink);
+      background: #0A0010;
+      color: #F0ECF8;
       font-family: var(--body);
       font-size: 16px;
       line-height: 1.65;
@@ -60,7 +50,7 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       display: flex; justify-content: space-between; align-items: center;
       padding: 1.2rem 3rem;
-      background: rgba(247,245,239,0.88); backdrop-filter: blur(16px);
+      background: rgba(10,0,16,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid #2A0048;
       border-bottom: 1.5px solid var(--border);
       animation: fadeDown 0.6s ease both;
     }
@@ -72,18 +62,18 @@
     .logo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--yellow); display: inline-block; }
     .nav-links { display: flex; gap: 0.5rem; list-style: none; }
     .nav-links a {
-      font-size: 0.82rem; font-weight: 500; text-decoration: none; color: var(--mid);
+      font-size: 0.82rem; font-weight: 500; text-decoration: none; color: #C8A8E8;
       padding: 0.4rem 1rem; border-radius: 999px; border: 1.5px solid transparent;
       transition: all 0.2s;
     }
-    .nav-links a:hover { border-color: var(--ink); color: var(--ink); background: var(--white); }
+    .nav-links a:hover { border-color: #800080; color: #F0ECF8; background: #2A0048; }
     .nav-cta {
       font-size: 0.82rem; font-weight: 600; text-decoration: none;
-      color: var(--ink); background: var(--yellow);
-      padding: 0.5rem 1.4rem; border-radius: 999px; border: 1.5px solid var(--yellow);
+      color: #F0ECF8; background: #800080;
+      padding: 0.5rem 1.4rem; border-radius: 999px; border: 1.5px solid #800080;
       transition: all 0.2s;
     }
-    .nav-cta:hover { background: var(--ink); color: var(--yellow); border-color: var(--ink); }
+    .nav-cta:hover { background: #560072; color: #F0ECF8; border-color: #560072; }
     .hero {
       min-height: 100vh; padding: 9rem 3rem 4rem;
       display: flex; flex-direction: column; justify-content: center;
@@ -96,8 +86,8 @@
     .hero-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; animation: fadeUp 0.7s 0.2s ease both; }
     .status-pill {
       display: flex; align-items: center; gap: 0.5rem;
-      background: var(--white); border: 1.5px solid var(--border); border-radius: 999px;
-      padding: 0.4rem 1rem; font-size: 0.78rem; font-weight: 500; color: var(--ink);
+      background: #1A0030; border: 1.5px solid #560072; border-radius: 999px;
+      padding: 0.4rem 1rem; font-size: 0.78rem; font-weight: 500; color: #F0ECF8;
     }
     .status-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; animation: blink 2s ease-in-out infinite; }
     .hero-name {
@@ -106,12 +96,12 @@
       line-height: 0.92; letter-spacing: -0.03em; margin-bottom: 2rem;
       animation: fadeUp 0.7s 0.3s ease both;
     }
-    .highlight-block { display: inline-block; background: var(--yellow); padding: 0.1em 0.35em; border-radius: 8px; }
+    .highlight-block { display: inline-block; background: #800080; padding: 0.1em 0.35em; border-radius: 8px; color: #F0ECF8; }
     .hero-bottom {
       display: flex; justify-content: space-between; align-items: flex-end;
       flex-wrap: wrap; gap: 2rem; animation: fadeUp 0.7s 0.5s ease both;
     }
-    .hero-desc { max-width: 500px; font-size: 1.05rem; color: var(--mid); line-height: 1.75; }
+    .hero-desc { max-width: 500px; font-size: 1.05rem; color: #C8A8E8; line-height: 1.75; }
     .hero-desc strong { color: var(--ink); font-weight: 600; }
     .hero-actions { display: flex; gap: 0.8rem; align-items: center; }
     .btn {
@@ -120,16 +110,16 @@
       text-decoration: none; padding: 0.85rem 1.8rem; border-radius: 999px;
       transition: all 0.22s; cursor: none;
     }
-    .btn-dark { background: var(--ink); color: var(--yellow); border: 2px solid var(--ink); }
-    .btn-dark:hover { background: var(--yellow); color: var(--ink); }
-    .btn-outline { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
-    .btn-outline:hover { background: var(--ink); color: var(--white); }
-    .btn-yellow { background: var(--yellow); color: var(--ink); border: 2px solid var(--yellow); }
-    .btn-yellow:hover { background: transparent; color: var(--yellow); }
-    .btn-ghost-white { background: transparent; color: rgba(255,255,255,0.8); border: 2px solid rgba(255,255,255,0.2); }
-    .btn-ghost-white:hover { border-color: var(--white); color: var(--white); }
+    .btn-dark { background: #560072; color: #F0ECF8; border: 2px solid #800080; }
+    .btn-dark:hover { background: #800080; color: #F0ECF8; }
+    .btn-outline { background: transparent; color: #F0ECF8; border: 2px solid #800080; }
+    .btn-outline:hover { background: #800080; color: #F0ECF8; }
+    .btn-yellow { background: #800080; color: #F0ECF8; border: 2px solid #800080; }
+    .btn-yellow:hover { background: #560072; color: #F0ECF8; border-color: #560072; }
+    .btn-ghost-white { background: transparent; color: #F0ECF8; border: 2px solid #560072; }
+    .btn-ghost-white:hover { border-color: #800080; color: #F0ECF8; background: rgba(128,0,128,0.15); }
     .stats-bar {
-      background: var(--ink); padding: 2.5rem 3rem;
+      background: #1A0030; padding: 2.5rem 3rem;
       display: flex;
     }
     .stat-item {
@@ -138,10 +128,11 @@
     }
     .stat-item:last-child { border-right: none; }
     .stat-num { font-family: var(--display); font-weight: 800; font-size: 2.8rem; color: var(--yellow); line-height: 1; margin-bottom: 0.3rem; }
-    .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.45); text-align: center; }
+    .stat-label { font-size: 0.8rem; color: rgba(240,236,248,0.7); text-align: center; }
     .marquee-section {
-      background: var(--yellow); overflow: hidden; padding: 1.2rem 0;
-      border-top: 2px solid rgba(0,0,0,0.1); border-bottom: 2px solid rgba(0,0,0,0.1);
+      background: #2A0048; color: #F0ECF8;
+      overflow: hidden; padding: 1.2rem 0;
+      border-top: 1px solid #560072; border-bottom: 1px solid #560072;
     }
     .marquee-track { display: flex; gap: 3rem; white-space: nowrap; animation: scroll-left 22s linear infinite; }
     .marquee-item {
@@ -151,7 +142,7 @@
     }
     .marquee-star { color: rgba(0,0,0,0.3); font-size: 1.2rem; }
     .section { padding: 6rem 3rem; }
-    .section-alt { background: var(--white); }
+    .section-alt { background: #130020; }
     .section-eyebrow {
       font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--mid); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.6rem;
@@ -168,13 +159,13 @@
       font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.1;
       letter-spacing: -0.02em; margin-bottom: 1.5rem;
     }
-    .about-text p { font-size: 0.95rem; color: var(--mid); line-height: 1.85; margin-bottom: 1rem; }
-    .about-text p strong { color: var(--ink); }
-    .about-card { background: rgba(247,245,239,0.75); backdrop-filter: blur(14px); border-radius: 24px; padding: 2.5rem; border: 2px solid rgba(226,221,214,0.8); box-shadow: 0 8px 40px rgba(0,0,0,0.06); }
+    .about-text p { font-size: 0.95rem; color: #C8A8E8; line-height: 1.85; margin-bottom: 1rem; }
+    .about-text p strong { color: #F0ECF8; }
+    .about-card { background: #1A0030; backdrop-filter: blur(14px); border-radius: 24px; padding: 2.5rem; border: 1px solid #560072; box-shadow: 0 8px 40px rgba(42,0,72,0.4); color: #F0ECF8; }
     .fact { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 0; border-bottom: 1.5px solid var(--border); font-size: 0.88rem; }
     .fact:last-child { border-bottom: none; }
-    .fact-k { color: var(--soft); font-weight: 500; }
-    .fact-v { color: var(--ink); font-weight: 600; }
+    .fact-k { color: #A090C0; font-weight: 500; }
+    .fact-v { color: #F0ECF8; font-weight: 600; }
     .fact-v.open { color: #0B9E4E; }
     .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
     .work-card {
@@ -182,21 +173,22 @@
       border: 2px solid transparent; transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
     .work-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
-    .wc-yellow { background: #FFF9D6; border-color: #FFE566; }
-    .wc-green  { background: #D6FFF0; border-color: #7BFFD4; }
-    .wc-blue   { background: #D6E8FF; border-color: #8BB8FF; }
-    .wc-coral  { background: #FFE0E0; border-color: #FFB3B3; }
+    .wc-yellow { background: #560072; border-color: #800080; color: #F0ECF8; }
+    .wc-green  { background: #D50048; border-color: #FF0000; color: #F0ECF8; }
+    .wc-blue   { background: #2A0048; border-color: #560072; color: #F0ECF8; }
+    .wc-coral  { background: #A90072; border-color: #D50048; color: #F0ECF8; }
     .work-card-badge {
+      background: rgba(255,255,255,0.15) !important; color: #F0ECF8 !important;
       display: inline-flex; align-items: center; gap: 0.4rem;
       font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
       background: rgba(0,0,0,0.07); border-radius: 999px; padding: 0.3rem 0.9rem;
       margin-bottom: 1.2rem; color: var(--ink);
     }
-    .work-card h3 { font-family: var(--display); font-weight: 700; font-size: 1.5rem; margin-bottom: 0.3rem; line-height: 1.2; }
-    .work-card .company { font-size: 0.85rem; font-weight: 600; opacity: 0.5; margin-bottom: 1rem; }
-    .work-card p.desc { font-size: 0.9rem; color: var(--mid); line-height: 1.75; margin-bottom: 1.2rem; }
+    .work-card h3 { font-family: var(--display); font-weight: 700; font-size: 1.5rem; margin-bottom: 0.3rem; line-height: 1.2; color: #FFFFFF; }
+    .work-card .company { font-size: 0.85rem; font-weight: 600; opacity: 0.75; margin-bottom: 1rem; color: #F0ECF8; }
+    .work-card p.desc { font-size: 0.9rem; color: rgba(240,236,248,0.85); line-height: 1.75; margin-bottom: 1.2rem; }
     .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .ctag { font-size: 0.72rem; font-weight: 500; padding: 0.25rem 0.8rem; border-radius: 999px; background: rgba(0,0,0,0.07); color: var(--ink); }
+    .ctag { font-size: 0.72rem; font-weight: 500; padding: 0.25rem 0.8rem; border-radius: 999px; background: rgba(255,255,255,0.15); color: #F0ECF8; }
     .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
     .vimeo-wrap {
       border-radius: 14px; overflow: hidden;
@@ -218,52 +210,53 @@
     .testimonial-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
     .achiev-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     .achiev-card {
-      background: var(--white); border: 2px solid var(--border); border-radius: 16px;
+      background: #1A0030; color: #F0ECF8;
+      border: 1px solid #560072; border-radius: 16px;
       padding: 2rem; display: flex; gap: 1.5rem; align-items: flex-start;
       transition: border-color 0.2s, transform 0.2s;
     }
-    .achiev-card:hover { border-color: var(--yellow); transform: translateY(-2px); }
+    .achiev-card:hover { border-color: #800080; transform: translateY(-2px); }
     .rank-badge {
       font-family: var(--display); font-weight: 800; font-size: 1rem;
       width: 52px; height: 52px; border-radius: 12px;
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
-    .rb-y { background: var(--yellow); color: var(--ink); }
-    .rb-g { background: var(--green); color: var(--ink); }
+    .rb-y { background: #800080; color: #F0ECF8; }
+    .rb-g { background: #D50048; color: #F0ECF8; }
     .rb-c { background: var(--coral); color: white; }
     .rb-b { background: var(--blue); color: white; font-size: 1.4rem; font-weight: 400; }
-    .achiev-info h3 { font-family: var(--display); font-weight: 700; font-size: 1rem; margin-bottom: 0.3rem; }
-    .achiev-info p { font-size: 0.82rem; color: var(--mid); line-height: 1.6; }
-    .achiev-host { font-size: 0.72rem; font-weight: 600; color: var(--soft); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.5rem; }
+    .achiev-info h3 { font-family: var(--display); font-weight: 700; font-size: 1rem; margin-bottom: 0.3rem; color: #F0ECF8; }
+    .achiev-info p { font-size: 0.82rem; color: #C8A8E8; line-height: 1.6; }
+    .achiev-host { font-size: 0.72rem; font-weight: 600; color: #800080; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.5rem; }
     .skills-wrapper { display: flex; flex-direction: column; gap: 2.5rem; }
     .skill-row-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid); margin-bottom: 1rem; }
     .skill-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-    .skill-pill {
+    .skill-pill { color: #F0ECF8; border-color: #560072 !important; background: rgba(86,0,114,0.15) !important;
       font-size: 0.88rem; font-weight: 500; padding: 0.55rem 1.3rem;
       border-radius: 999px; border: 2px solid var(--border); background: var(--white);
       color: var(--ink); transition: all 0.2s;
     }
-    .skill-pill:hover { border-color: var(--ink); background: var(--yellow); }
-    .skill-pill.hot { background: var(--yellow); border-color: var(--yellow); font-weight: 600; }
+    .skill-pill:hover { border-color: #A90072; background: rgba(169,0,114,0.25); color: #F0ECF8; }
+    .skill-pill.hot { background: #800080; border-color: #800080; font-weight: 600; color: #F0ECF8; }
     #contact {
-      background: var(--ink); padding: 7rem 3rem;
+      background: #0A0010; padding: 8rem 6rem;
       text-align: center; position: relative; overflow: hidden;
     }
     .contact-blob {
       position: absolute; width: 500px; height: 500px; border-radius: 50%;
-      background: var(--yellow); opacity: 0.06;
+      background: #560072; opacity: 0.12;
       top: 50%; left: 50%; transform: translate(-50%, -50%);
     }
     .contact-heading {
       font-family: var(--display); font-weight: 800;
-      font-size: clamp(3rem, 7vw, 7rem); line-height: 0.95;
-      letter-spacing: -0.03em; color: var(--white); margin-bottom: 1.5rem;
+      font-size: clamp(3rem, 6vw, 6rem); line-height: 1.0;
+      letter-spacing: -0.03em; color: #F0ECF8; margin-bottom: 1.5rem;
     }
     .contact-heading .yell { color: var(--yellow); }
-    .contact-sub { font-size: 1rem; color: rgba(255,255,255,0.4); margin-bottom: 3rem; }
+    .contact-sub-unused { font-size: 1rem; color: rgba(255,255,255,0.4); margin-bottom: 3rem; }
     .contact-row { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
     footer {
-      background: #0A0909; padding: 1.5rem 3rem;
+      background: #0A0010; padding: 1.5rem 3rem; border-top: 1px solid #2A0048;
       display: flex; justify-content: space-between; align-items: center;
       border-top: 1px solid rgba(255,255,255,0.05);
     }
@@ -276,9 +269,9 @@
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity: 1; transform: none; }
     /* ── FLOATING SAYINGS ── */
-    .saying { position:absolute; pointer-events:none; font-family:'Caveat',cursive; font-weight:600; background:var(--white); border:2px solid var(--border); border-radius:14px; padding:0.5rem 1rem; font-size:0.95rem; color:var(--ink); box-shadow:3px 4px 20px rgba(0,0,0,0.07); backdrop-filter:blur(8px); white-space:nowrap; animation:floatSaying 5s ease-in-out infinite alternate; }
+    .saying { position:absolute; pointer-events:none; font-family:'Caveat',cursive; font-weight:600; background:#1A0030; border:2px solid #560072; border-radius:14px; padding:0.5rem 1rem; font-size:0.95rem; color:#F0ECF8; box-shadow:3px 4px 20px rgba(0,0,0,0.07); backdrop-filter:blur(8px); white-space:nowrap; animation:floatSaying 5s ease-in-out infinite alternate; }
     .saying.yellow { background:var(--yellow); border-color:#e6c000; }
-    .saying.green  { background:#D6FFF0; border-color:#7BFFD4; }
+    .saying.green  { background:#D50048; border-color:#FF0000; color:#F0ECF8; }
     .saying-1 { top:20%; right:4%;   animation-delay:0s;   --r:3deg;  }
     .saying-2 { top:45%; right:1%;   animation-delay:1.2s; --r:-4deg; }
     .saying-3 { bottom:20%; right:10%; animation-delay:2.4s; --r:2deg;  }
@@ -309,6 +302,7 @@
     }
     /* ── HIRE TOAST ── */
     .hire-toast {
+      background: #1A0030 !important; border-color: #560072 !important; color: #F0ECF8 !important;
       position:fixed; bottom:1.8rem; left:50%; transform:translateX(-50%) translateY(120px);
       background:var(--ink); color:var(--white);
       display:flex; align-items:center; gap:1rem;
@@ -353,6 +347,7 @@
 
       /* Toast — slim single line on mobile */
       .hire-toast {
+      background: #1A0030 !important; border-color: #560072 !important; color: #F0ECF8 !important;
         padding: .55rem 1rem;
         gap: .5rem;
         font-size: .72rem;
@@ -390,7 +385,7 @@
 
       /* Skills pills wrap nicely */
       .skill-pills { gap: 0.4rem; }
-      .skill-pill { font-size: .8rem; padding: .45rem 1rem; }
+      .skill-pill { color: #F0ECF8; font-size: .8rem; padding: .45rem 1rem; }
 
       /* Contact section padding */
       #contact { padding: 4rem 1.5rem; }
@@ -448,8 +443,7 @@
     </h1>
     <div class="hero-bottom">
       <p class="hero-desc">
-        Visual designer &amp; marketing strategist. Built <strong>Scrap Media</strong> from scratch —
-        200+ clients, 125% avg. engagement growth. Now at <strong>SIMS Pune (MBA '28)</strong>
+        Visual designer &amp; marketing strategist. Worked with 100+ clients as a freelancer, helping creators grow through quality content and sharp visual storytelling.
         while creating work that actually moves people.
       </p>
       <div class="hero-actions">
@@ -460,8 +454,8 @@
   </section>
 
   <div class="stats-bar">
-    <div class="stat-item"><span class="stat-num">200+</span><span class="stat-label">Clients served</span></div>
-    <div class="stat-item"><span class="stat-num">125%</span><span class="stat-label">Avg. engagement lift</span></div>
+    <div class="stat-item"><span class="stat-num">100+</span><span class="stat-label">Clients served</span></div>
+    <div class="stat-item"><span class="stat-num">3+</span><span class="stat-label">Years freelancing</span></div>
     <div class="stat-item"><span class="stat-num">3+</span><span class="stat-label">Years freelancing</span></div>
     <div class="stat-item"><span class="stat-num">1st</span><span class="stat-label">National case win</span></div>
   </div>
@@ -489,13 +483,13 @@
       <div class="about-inner">
         <div class="about-text">
           <h2>Designing things<br>that <span class="highlight-block">actually work.</span></h2>
-          <p>I've been freelancing since 12th grade — not as a side project, but as a real business. I built <strong>Scrap Media</strong>, grew it to 200+ clients, managed a team, set pricing, acquired clients, and delivered results that spoke for themselves.</p>
+          <p>I've been freelancing since 12th grade — not as a side project, but as something I built seriously. Worked with 100+ clients, set my own pricing, acquired clients independently, and let the work speak for itself.</p>
           <p>My edge is sitting at the intersection of <strong>visual craft and strategic thinking</strong>. I don't just design — I understand audiences, brand narratives, and what actually drives growth.</p>
-          <p>Currently doing my <strong>MBA at SIMS Pune (2026–2028)</strong> while staying active in the industry.</p>
+          <p>Currently working at Headout on Dex — an AI-powered tour guide product — while actively building in the creative space.</p>
         </div>
         <div class="about-card">
           <div class="fact"><span class="fact-k">Based in</span><span class="fact-v">Bengaluru, India 🇮🇳</span></div>
-          <div class="fact"><span class="fact-k">MBA</span><span class="fact-v">SIMS Pune, 2026–28</span></div>
+          
           <div class="fact"><span class="fact-k">Undergrad</span><span class="fact-v">BBA — Business Analytics</span></div>
           <div class="fact"><span class="fact-k">Core tools</span><span class="fact-v">AE · Premiere · PS · AI</span></div>
           <div class="fact"><span class="fact-k">Languages</span><span class="fact-v">A English &nbsp;·&nbsp; हि Hindi &nbsp;·&nbsp; த Tamil &nbsp;·&nbsp; ಕ Kannada<br><span class="multilingual-tag">Multilingual</span></span></div>
@@ -510,10 +504,10 @@
     <h2 class="section-heading reveal">What I've been<br>building 🛠️</h2>
     <div class="work-grid reveal">
       <div class="work-card wc-yellow">
-        <span class="work-card-badge">🏢 June 2024 — Present</span>
-        <h3>Freelance Visual Designer &amp; Agency Founder</h3>
+        <span class="work-card-badge">🏢 2022 — Present</span>
+        <h3>Freelance Visual Designer</h3>
         <p class="company">Scrap Media (Self-Employed)</p>
-        <p class="desc">Built and scaled a content creation agency from zero — 200+ clients, a coordinated team, and a proven system. Handled client acquisition, pricing, negotiation, and quality control. 125% average engagement lift across all accounts.</p>
+        <p class="desc">Worked independently with 100+ clients across gaming, tech, and creator content. Handled end-to-end delivery — client acquisition, pricing, negotiation, and quality control. Helped creators grow through high-quality visual content.</p>
         <div class="card-tags"><span class="ctag">Agency Building</span><span class="ctag">Video Editing</span><span class="ctag">Client Mgmt</span><span class="ctag">Growth</span></div>
       </div>
       <div class="work-card wc-green">
@@ -550,6 +544,7 @@
       <div class="vimeo-wrap"><iframe src="https://player.vimeo.com/video/1185406922?badge=0&autopause=0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe></div>
       <div class="vimeo-wrap"><iframe src="https://player.vimeo.com/video/1185407747?badge=0&autopause=0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe></div>
       <div class="vimeo-wrap"><iframe src="https://player.vimeo.com/video/1185407719?badge=0&autopause=0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe></div>
+      <div class="vimeo-wrap"><iframe src="https://player.vimeo.com/video/1207111668?badge=0&autopause=0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe></div>
     </div>
   </section>
 
@@ -640,11 +635,11 @@
   <section id="contact">
     <div class="contact-blob"></div>
     <div class="reveal" style="position:relative;z-index:1;">
-      <p class="section-eyebrow" style="justify-content:center;color:rgba(255,255,255,0.3);margin-bottom:1.5rem;">
+      <p class="section-eyebrow" style="justify-content:center;color:rgba(240,236,248,0.5);margin-bottom:1.5rem;">
         <span class="eyebrow-line" style="background:rgba(255,255,255,0.15)"></span>Say Hello
       </p>
       <h2 class="contact-heading">Let's make<br>something <span class="yell">great.</span></h2>
-      <p class="contact-sub">Open to internships, freelance projects &amp; full-time marketing roles.</p>
+      <p class="contact-sub" style="color:rgba(240,236,248,0.6);font-size:1rem;margin-bottom:2.5rem;">Open to internships, freelance projects &amp; full-time marketing roles.</p>
       <div class="contact-row">
         <a href="mailto:rishiikumarr005@gmail.com" class="btn btn-yellow">📧 rishiikumarr005@gmail.com</a>
         <a href="https://www.linkedin.com/in/rishi-kumar-9970a8322/" target="_blank" class="btn btn-ghost-white">LinkedIn ↗</a>
