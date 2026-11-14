@@ -385,6 +385,11 @@ button{font:inherit;color:inherit;letter-spacing:inherit;cursor:pointer;border:0
   transition:transform .8s var(--ease) calc(var(--i) * 60ms),box-shadow .4s}
 .deck.dealt .card-p{transform:translateX(calc(var(--o) * var(--step))) translateY(calc(var(--a) * 9px)) rotate(calc(var(--o) * 4deg))}
 .deck.dealt .card-p:hover,.deck.dealt .card-p:focus-visible{z-index:40;transition-delay:0s;transform:translateX(calc(var(--o) * var(--step))) translateY(calc(var(--a) * 9px - 34px)) rotate(calc(var(--o) * 3deg)) scale(1.05);box-shadow:0 40px 70px -20px rgba(0,0,0,.8),0 0 0 2px var(--tint)}
+/* no!ce: scrubbed by scroll instead of dealt; each slide hops up after the one before, like the bottles in the film */
+.deck.scrub .card-p{--pk:clamp(0,calc(var(--p,0) * 1.9 - var(--i) * .15),1);transition:transform .18s linear,box-shadow .4s,opacity .18s linear;
+  opacity:calc(.15 + var(--pk) * .85);
+  transform:translateX(calc(var(--o) * var(--step) * var(--pk))) translateY(calc((1 - var(--pk)) * 150px + var(--a) * 9px * var(--pk) - sin(var(--pk) * 3.1416) * 34px)) rotate(calc(var(--o) * 4deg * var(--pk) + (1 - var(--pk)) * var(--o) * -10deg))}
+.deck.scrub .card-p:hover,.deck.scrub .card-p:focus-visible{z-index:40;transition:transform .5s var(--ease),box-shadow .4s;transform:translateX(calc(var(--o) * var(--step))) translateY(calc(var(--a) * 9px - 34px)) rotate(calc(var(--o) * 3deg)) scale(1.05);box-shadow:0 40px 70px -20px rgba(0,0,0,.8),0 0 0 2px var(--tint)}
 .card-p img{width:100%;height:100%;object-fit:cover}
 .card-p i{position:absolute;left:7px;top:7px;font-style:normal;font-size:11px;font-weight:600;color:#fff;background:rgba(10,10,12,.72);backdrop-filter:blur(8px);padding:3px 8px;border-radius:999px;white-space:nowrap;opacity:0;transform:translateY(4px);transition:opacity .25s,transform .25s}
 .card-p:hover i,.card-p:focus-visible i{opacity:1;transform:none}
@@ -774,8 +779,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
 .toast{position:fixed;left:50%;bottom:18px;z-index:70;transform:translate(-50%,140%);opacity:0;visibility:hidden;transition:transform .6s var(--spring),opacity .35s,visibility 0s linear .6s;
   display:flex;align-items:center;gap:12px;background:var(--btn);color:var(--btn-ink);border-radius:999px;padding:9px 10px 9px 18px;box-shadow:var(--shadow-lg);white-space:nowrap;max-width:calc(100vw - 24px);font-size:14px;font-weight:500}
 .toast.show{transform:translate(-50%,0);opacity:1;visibility:visible;transition-delay:0s}
-.toast a{font-weight:700;background:var(--lime);color:#000;padding:6px 12px;border-radius:999px}
+.toast,.toast a,.toast span{font-family:var(--sans);letter-spacing:-.01em}
+.toast>span{font-weight:600}
+.toast a{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;background:var(--lime);color:#000;height:32px;padding:0 6px 0 13px;border-radius:999px}
+.toast a i{font-style:normal;width:21px;height:21px;border-radius:50%;background:#000;color:var(--lime);display:grid;place-items:center;font-size:11px}
 .toast button{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;opacity:.6}
+.toast button svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
 .toast button:hover{opacity:1}
 .toast .short{display:none}
 @media (max-width:560px){.toast .long{display:none}.toast .short{display:inline}}
@@ -933,7 +942,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
       <span class="badge"><b>Experience</b>Since 2022</span>
       <h2 class="h2" style="margin-top:18px">Where I've been</h2>
       <div class="tl">
-        <div class="when">Now<small>since May</small></div>
+        <div class="when">May 2026 – Now</div>
         <div class="what"><b>Research &amp; Media Associate</b><span class="co">Headout, on Dex</span>
           <ul>
             <li>Made the promo video for Dex's Cubbon Park tour. It's up on Headout's official page.</li>
@@ -942,26 +951,35 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
             <li>Made two training videos for Headout's freelance recce folks, and built the research &amp; map tool the team uses.</li>
           </ul></div>
 
-        <div class="when">May 2022 – Dec 2024<small>2 yrs 8 mos</small></div>
-        <div class="what"><b>Co-founder, Video Editor &amp; Visual Designer</b><span class="co">Scrap Media, the studio I co-founded</span>
-          <ul>
-            <li>Grew it to ₹40 lakh+ in revenue in 2 years, finding and pricing every client ourselves.</li>
-            <li>Edited and designed for 100+ clients in gaming, tech and the creator space.</li>
-            <li>Pushed views and comments up by as much as 125% for the creators we worked with.</li>
-            <li>When it got busy, I ran a crew of 5–6 editors. Briefs, deadlines and QC stayed with me.</li>
-          </ul></div>
-
-        <div class="when">Mar – May<small>3 months</small></div>
+        <div class="when">Mar – May 2026</div>
         <div class="what"><b>Marketing &amp; Content Intern</b><span class="co">Voyaah, a travel-tech startup</span>
           <ul>
             <li>Made demo videos for features that hadn't shipped yet, for travellers and investors.</li>
             <li>Turned AI product ideas into visuals people could actually follow, and helped out on investor decks.</li>
           </ul></div>
 
-        <div class="when">Jun – Jul<small>2024</small></div>
+        <div class="when">Jan 2025 – Now</div>
+        <div class="what"><b>Visual Designer (Freelance)</b><span class="co">rishicreatives.space, my independent practice</span>
+          <ul>
+            <li>Went solo after Scrap Media: no agency in the middle, just brands and the person who makes their videos.</li>
+            <li>Made Play Store spots, product demos and motion pieces for brands like Stimuler and Voyaah, among others.</li>
+            <li>Brought AI into the craft: people generated in Firefly, apps animated frame by frame in After Effects, so a spot could ship without a shoot.</li>
+            <li>Take every project from the first pitch and storyboard to the final export, on my own.</li>
+          </ul></div>
+
+        <div class="when">Jun – Jul 2024</div>
         <div class="what"><b>Operations Intern</b><span class="co">Bangalore International Airport Ltd (BIAL)</span>
           <ul>
             <li>Reporting, coordination and process tracking for the ops teams. A big airport means a lot of moving parts.</li>
+          </ul></div>
+
+        <div class="when">May 2022 – Dec 2024</div>
+        <div class="what"><b>Co-founder, Video Editor &amp; Visual Designer</b><span class="co">Scrap Media, the studio I co-founded</span>
+          <ul>
+            <li>Grew it to ₹40 lakh+ in revenue in 2 years, finding and pricing every client ourselves.</li>
+            <li>Edited and designed for 100+ clients in gaming, tech and the creator space.</li>
+            <li>Pushed views and comments up by as much as 125% for the creators we worked with.</li>
+            <li>When it got busy, I ran a crew of 5–6 editors. Briefs, deadlines and QC stayed with me.</li>
           </ul></div>
       </div>
     </div>
@@ -1104,7 +1122,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
       </div>
       <div class="deck-wrap">
         <div class="deck-head"><h4 class="h4" style="margin:0">The breakdown, 6 slides</h4><p>Pick any slide, or play them all.</p></div>
-        <div class="deck" data-deck="noice"></div>
+        <div class="deck scrub" data-deck="noice"></div>
       </div>
     </article>
 
@@ -1497,10 +1515,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
 
 <!-- coffee toast -->
 <div class="toast" id="toast" role="status">
-  <span class="long">Grab a coffee. This one's on me.</span>
-  <span class="short">Coffee?</span>
-  <a href="#contact">Let's talk ☕</a>
-  <button type="button" aria-label="Dismiss">✕</button>
+  <span class="long">Grab a coffee? This one's on me.</span>
+  <span class="short">Grab a coffee?</span>
+  <a href="#contact">Let's talk <i aria-hidden="true">↗</i></a>
+  <button type="button" aria-label="Dismiss"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
 </div>
 
 <script>
@@ -1738,6 +1756,21 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
       b.setAttribute('aria-label', `Play the ${BD[key].title} breakdown from slide ${i + 1}, ${name}`);
       deck.appendChild(b);
     });
+    if (deck.classList.contains('scrub')) {
+      // tie the fan to the scroll position, from the moment the deck enters the screen until it sits mid-way up
+      if (reduce) { deck.style.setProperty('--p', 1); return; }
+      let on = false, raf = 0;
+      const upd = () => {
+        raf = 0;
+        const r = deck.getBoundingClientRect();
+        deck.style.setProperty('--p', clamp((innerHeight * .98 - r.top) / (innerHeight * .55), 0, 1).toFixed(3));
+      };
+      addEventListener('scroll', () => { if (on && !raf) raf = requestAnimationFrame(upd); }, { passive: true });
+      addEventListener('resize', upd);
+      new IntersectionObserver(es => { on = es[0].isIntersecting; upd(); }).observe(deck);
+      upd();
+      return;
+    }
     if (reduce) deck.classList.add('dealt');
     else new IntersectionObserver((es, ob) => { if (es[0].isIntersecting) { deck.classList.add('dealt'); ob.disconnect(); } }, { threshold: .4 }).observe(deck);
   });
